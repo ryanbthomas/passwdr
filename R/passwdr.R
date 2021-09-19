@@ -1,4 +1,12 @@
 
+#' Title
+#'
+#' @param num_words
+#'
+#' @return
+#' @export
+#'
+#' @examples
 passphrase <- function(num_words = 6) {
 
     pass <- vector("character", length = num_words)
@@ -17,6 +25,16 @@ new_passphrase <- function(x) {
 
 
 
+#' Title
+#'
+#' @param pass
+#' @param ...
+#' @param position
+#'
+#' @return
+#' @export
+#'
+#' @examples
 add_token_between_words <- function(pass, ..., position = length(pass)) {
 
     if (is.call(position)) {
@@ -53,30 +71,77 @@ add_token <- function(..., size = 1, replace = FALSE, prob = NULL) {
 
 }
 
+#' Title
+#'
+#' @param size
+#' @param replace
+#' @param prob
+#'
+#' @return
+#' @export
+#'
+#' @examples
 add_symbol <- function(size = 1, replace = FALSE, prob = NULL) {
 
     add_token(symbols, size = size, replace = replace, prob = prob)
 }
 
+#' Title
+#'
+#' @param size
+#' @param replace
+#' @param prob
+#'
+#' @return
+#' @export
+#'
+#' @examples
 add_number <- function(size = 1, replace = FALSE, prob = NULL) {
 
     add_token(as.character(0:9), size = size, replace = replace, prob = prob)
 }
 
+#' Title
+#'
+#' @param size
+#' @param replace
+#' @param prob
+#'
+#' @return
+#' @export
+#'
+#' @examples
 add_upper_alpha <- function(size = 1, replace = FALSE, prob = NULL) {
     add_token(LETTERS, size = size, replace = replace, prob = prob)
 }
 
+#' Title
+#'
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
 shuffle <- function(...) {
     lst <- unlist(list(...))
     num_items <- length(lst)
 
     lst[sample(num_items, num_items)]
 }
+#' Title
+#'
+#' @param x
+#' @param ...
+#'
+#' @return
+#' @export
+#'
 #' @importFrom base print
 print.passphrase <- function(x, ...) {
-    cat("\n    ", paste0(unclass(x), collapse = " "), "\n")
+    box_text(paste0(unclass(x), collapse = " "))
     invisible(x)
 }
+
 
 
