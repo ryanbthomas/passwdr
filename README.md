@@ -22,12 +22,13 @@ Making It Easy to Make Better Passwords
 
 ## Installation
 
-You can install the released version of passwdr from
-[CRAN](https://CRAN.R-project.org) with:
+<!--
+You can install the released version of passwdr from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("passwdr")
 ```
+-->
 
 And the development version from [GitHub](https://github.com/) with:
 
@@ -43,4 +44,16 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(passwdr)
 ## basic example code
+passphrase()
+
+# sometimes password rules to have upper case and numbers and symbols
+
+passphrase() %>% 
+  add_token_between_words(
+    shuffle(
+      add_upper_alpha(), 
+      add_symbol(), 
+      add_number(size = 2)
+    ), 
+    position = 0)  
 ```
